@@ -30,6 +30,7 @@ export default class HtmlMediaSource extends videojs.EventTarget {
     // delegate to the native MediaSource's methods by default
     for (property in this.nativeMediaSource_) {
       if (!(property in HtmlMediaSource.prototype) &&
+          property !== 'handle' &&
           typeof this.nativeMediaSource_[property] === 'function') {
         this[property] = this.nativeMediaSource_[property].bind(this.nativeMediaSource_);
       }
